@@ -1,12 +1,21 @@
 <?php
 	require_once 'lib/limonade.php';
 
-	dispatch( '/hello', 'hello_world' );
+	$user = new stdClass();
 
-	function hello_world()
+	$user -> logged_in = false;
+
+	if( $user -> logged_in )
 	{
-		return '<h1>hellow, Orld!</h1>';
+		dispatch( '/', 'hello_world' );
 	}
+	else
+	{
+		dispatch( '/', 'login' );
+	}
+
+	dispatch( '/hello', 'hello_world' );
+	dispatch( '/user/login', 'login' );
 
 	run();
 ?>
