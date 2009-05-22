@@ -1,11 +1,14 @@
 <?php
+	error_reporting(E_ALL);
+
 	require_once 'lib/limonade.php';
+	require_once 'lib/user.php';
 
-	$user = new stdClass();
+	User::login( 'iusername', 'ipassword' );
 
-	$user -> logged_in = false;
+//	User::logout();
 
-	if( $user -> logged_in )
+	if( User::isLoggedIn() )
 	{
 		dispatch( '/', 'hello_world' );
 	}
