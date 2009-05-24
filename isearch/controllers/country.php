@@ -1,5 +1,10 @@
 <?php
-	
+	// this is the country controller, since limonade does not forcing
+	// naming conventions, you can call the controllers whatever you'd like
+	// (if there is one, I just missed it, then Ooops. sorry)
+
+	// listing the countries, obviously would be much nicer
+	// if we used a database but for simplicity's sake we didn't
 	function country_list()
 	{
 		$output = '<ul id="list" title="list" selected="true">';
@@ -19,15 +24,15 @@
 		return $output;
 	}
 
+	// searching for a country after a POST event
+	// we might want to remove ALL the VIEW logic from here,
+	// and move it to the VIEW (ie: <ul><li> ... etc)
+	// just to follow true MVC patterns
 	function country_search()
 	{
-		if( sizeof( $_POST ) == 0  )
+		if( sizeof( $_POST ) )
 		{
-			return _search_form();
-		}
-		else
-		{
-			$output = _search_form();
+			$output = '<ul id="countries" selected="true">';
 			foreach( _get_countries() as $country )
 			{
 				if( preg_match( '/^' . $_POST[ 'country' ] . '/i', $country ) )
@@ -35,17 +40,13 @@
 					$output .= '<li>' . $country . '</li>';
 				}
 			}
+			$output .= '</ul>';
+			set( 'output', $output );
 		}
-
-		return $output;
-		
+		return html( 'country_search.tpl.php' );
 	}
 
-	function _search_form()
-	{
-		return '<form action="" method="post">country <input type="text" name="country" id="country"><input type="submit" value=" search "></form>';
-	}
-
+	// and some countries, sorted by name ;)
 	function _get_countries()
 	{
 		$countries = array(
