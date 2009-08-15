@@ -60,9 +60,9 @@ a img {	border: 0px solid #FFFFFF;}
 		#topnext .logo { margin:0 60px 0 31px; padding:0 0 1px 0; float:left; display:inline;}
 
 		#topnext #search { float:left; margin:3px 0 0 0; width:425px;}
-			#topnext #search form { background:url(../images/bgs.gif) repeat-x top; margin:0;}
-				#topnext #search fieldset {background: url(../images/bgslg.gif) top left no-repeat;}
-				#topnext #search .b { background:#F9F9F9 url(../images/bgsrg.gif) top left no-repeat;}
+			#topnext #search form { background:url(/images/bgs.gif) repeat-x top; margin:0;}
+				#topnext #search fieldset {background: url(/images/bgslg.gif) top left no-repeat;}
+				#topnext #search .b { background:#F9F9F9 url(/images/bgsrg.gif) top left no-repeat;}
 
 /* pathway */
 	#pathway { background:#FFFFFF url(../images/bgp.gif) repeat-x top; height:41px; margin:40px 15px 0;  width:935px; line-height:41px;}
@@ -85,18 +85,18 @@ a img {	border: 0px solid #FFFFFF;}
 
 /* search */
 		#search { display:block; margin:0 auto; overflow:auto; width:565px; padding:0 0 0 20px; text-align:center}
-			#search form { background:url(../images/bgs.gif) repeat-x top; margin:0;}
-				#search fieldset { border:none; background: url(../images/bgsl.gif) top left no-repeat; height:30px; margin:0; padding:0;}
+			#search form { background:url(/images/bgs.gif) repeat-x top; margin:0;}
+				#search fieldset { border:none; background: url(/images/bgsl.gif) top left no-repeat; height:30px; margin:0; padding:0;}
 				#search input { border:none; float:left; font-size:16px; margin:4px 0 0 15px;}
-				#search .b { background:#FFFFFF url(../images/bgsr.gif) top left no-repeat; float:right; padding:0 0 0 15px; height:30px;}
+				#search .b { background:#FFFFFF url(/images/bgsr.gif) top left no-repeat; float:right; padding:0 0 0 15px; height:30px;}
 					#search .b input { margin:0 1px;}
 				#search p { color:#878787; margin:9px 0 0 0; padding:0;}
 
 #search_by_name { display:block; margin:0 auto; overflow:auto; width:300px; padding:0 0 0 20px; text-align:center}
-			#search_by_name form { background:url(../images/bgs.gif) repeat-x top; margin:0;}
-				#search_by_name fieldset { border:none; background: url(../images/bgsl.gif) top left no-repeat; height:30px; margin:0; padding:0;}
+			#search_by_name form { background:url(/images/bgs.gif) repeat-x top; margin:0;}
+				#search_by_name fieldset { border:none; background: url(/images/bgsl.gif) top left no-repeat; height:30px; margin:0; padding:0;}
 				#search_by_name input { border: 0px solid white; float:left; font-size:16px; margin:4px 0 0 15px;}
-				#search_by_name .b { background:#FFFFFF url(../images/bgsr.gif) top left no-repeat; float:right; padding:0 0 0 15px; height:30px;}
+				#search_by_name .b { background:#FFFFFF url(/images/bgsr.gif) top left no-repeat; float:right; padding:0 0 0 15px; height:30px;}
 					#search_by_name .b input { margin:0 1px;}
 				#search_by_name p { color:#878787; margin:9px 0 0 0; padding:0;}
 
