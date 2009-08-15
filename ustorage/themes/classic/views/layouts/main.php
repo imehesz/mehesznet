@@ -26,6 +26,7 @@
 		<div id="sm">
 
 <!-- main menu -->
+<?php /*
 			<div id="menu">
 				<a href="Hardware_Vendors_Equipment_Manufacturers">Equipment</a>
 				<a href="Mobile_Applications_Software_Development">Applications</a>
@@ -48,40 +49,33 @@
 					<a href="/facts/">Interesting</a>
 								</div>
 			</div>
+
+ */ ?>
 <!-- search -->
 			<div id="search">
 						<!-- Google CSE Search Box Begins  -->
-						<form action="http://www.wirelesspedia.com/show/search" id="searchbox_010533590402526479151:go7uhph9g_8" onsubmit="return checkSearch();">
+						<form action="#">
 						<fieldset>
-						  <input type="hidden" name="cx" value="010533590402526479151:go7uhph9g_8" />
-						  <input type="hidden" name="cof" value="FORID:11" />
-
-						  <input type="text" name="q" id="searchField"  size="65" />
+						  <input type="text" name="q" id="searchField"  size="30" value="SEARCH HERE ..." onClick="javascript:this.value='';" onBlur="javascript:if(this.value.length==0){this.value='SEARCH HERE ...';}" />
 						  <div class="b">
-								<input  type="image" src="images/search.gif"/>
+								<input  type="image" src="/images/search.gif"/>
 						  </div>
 						  </fieldset>
 						</form>
-				<p>search for wireless companies, business directory, find new telecoms technologies</p>
+				<p>searching only in Movies ... for now</p>
 			</div>
 
-
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_010533590402526479151%3Ago7uhph9g_8&amp;lang=en"></script>
-<!-- Google CSE Search Box Ends -->
-
-
-
-
 <!-- browse by -->
+            <?php /*
 			<div id="browse">
 				browse by: <a href="/Technology">Technology</a> <a href="/show">Country</a> <a href="/show/metroarealist">Metro area</a> <a href="/show/letter/">Alphabetical</a>
 
 			</div>
-
+            */ ?>
 		</div>
 
 		<div id="bottom">
-			<span>&copy; 2004 - 2008  Wirelesspedia.com</span> Wirelesspedia Home - <a href="/page/about">About</a> - <a href="/page/advertise/">Advertise</a> - <a href="/show/latestlist">New Companies</a> - <a href="/show/featuredlist/">Featured</a> - <a href="/show/contact">Contact Us</a> - <a href="/submit">Add Company(free)</a>
+            <span>&copy; 2003 - <?= date( 'Y', time() ); ?>  mehesz<font style="color:#f00;">.</font>net</span> Home - <a href="#">About</a> - <a href="#">Contact</a> - <a href="#">Advertise</a>
 
 		</div>
 
