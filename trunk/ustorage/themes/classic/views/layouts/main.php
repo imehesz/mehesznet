@@ -13,11 +13,35 @@
 
 <!-- top -->
 		<div id="top">
-			<div><a href="#" class="tag tag1">4g communications</a> <a href="#" class="tag tag2">telecom jobs</a> <a href="#" class="tag tag3">RF design</a> <a href="#" class="tag tag4">LTE</a> <a href="#" class="tag tag5">3g ringtones</a></div>
-			<div><a href="#" class="tag tag6">BREW</a> <a href="#" class="tag tag7">UMTS networks</a> <a href="#" class="tag tag8">Bluetooth gps</a> <a href="#" class="tag tag9">GIS</a> <a href="#" class="tag tag10">broadband internet</a></div>
+			<div>
+                <a href="#" class="tag tag1">4g communications</a>
+                <a href="#" class="tag tag2">telecom jobs</a>
+                <a href="#" class="tag tag3">RF design</a>
+                <a href="#" class="tag tag4">LTE</a>
+                <a href="#" class="tag tag5">3g ringtones</a>
+            </div>
 
-			<div><a href="#" class="tag tag11">gsm mobile</a> <a href="/" class="logo"><img src="images/logomain_orange.gif" alt="stored.by.u" /></a> <a href="#" class="tag tag12">WCDMA </a></div>
-			<div><a href="#" class="tag tag13">j2me games</a> <a href="#" class="tag tag14">HSDPA games</a> <a href="#" class="tag tag15">Zigbee products</a> <a href="#" class="tag tag16">live video</a> <a href="#" class="tag tag17">wimax equipment </a></div>
+			<div>
+                <a href="#" class="tag tag6">BREW</a>
+                <a href="#" class="tag tag7">UMTS networks</a>
+                <a href="#" class="tag tag8">Bluetooth gps</a>
+                <a href="#" class="tag tag9">GIS</a>
+                <a href="#" class="tag tag10">broadband internet</a>
+            </div>
+
+			<div>
+                <a href="#" class="tag tag11">gsm mobile</a>
+                <a href="/" class="logo"><img src="images/storedbyu_255x99.png" alt="stored.by.u" title="stored.by.u" /></a>
+                <a href="#" class="tag tag12">WCDMA </a>
+            </div>
+
+			<div>
+                <a href="#" class="tag tag13">j2me games</a>
+                <a href="#" class="tag tag14">HSDPA games</a>
+                <a href="#" class="tag tag15">Zigbee products</a>
+                <a href="#" class="tag tag16">live video</a>
+                <a href="#" class="tag tag17">wimax equipment </a>
+            </div>
 
 	  </div>
 
@@ -79,8 +103,11 @@
 
 		</div>
 
+        <?php /*
 		<div id="keywords">
-			Telecoms business directory &amp; wireless yellow pages with B2B wireless companies listed in main categories hardware, software, resources, operators &amp; products. Sub-categories sorted by technologies, marketing services, mobile applications, software development, mobile operators &amp; carriers. Business telecom services providers sorted by countries, states/provinces, metro areas &amp; technology. Seeking information on new distribution channels &amp; resources, technology forums or future technologies find faster - browse companies sorted by technologies GSM, UMTS, 3g, 4g, WCDMA, WiMAX, LTE, Bluetooth, WiFi, Zigbee, hardware suppliers, network equipment vendors or mobile phones manufacturers. Custom search engine with telecoms business directory &amp; wireless yellow web pages - more wireless more telecom!</div>
+            Here are some text about the operation snd such ... blah blah blah enad etc etc etc
+        </div>
+         */ ?>
 
 
 	</div>
