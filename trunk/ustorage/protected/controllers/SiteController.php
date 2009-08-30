@@ -74,4 +74,20 @@ class SiteController extends CController
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    public function actionSearch()
+    {
+        $this -> render( 'search' );
+    }
+
+    public function actionList()
+    {
+        Yii::import('application.extensions.imdb.imdb');
+        Yii::import('application.extensions.imdb.imdbsearch');
+        $imdb = new imdbsearch();
+        $imdb -> setsearchname ('terminator');
+        $results = $imdb -> results ();
+
+        $this -> render( 'list', array( 'movies' => $results ) );
+    }
 }

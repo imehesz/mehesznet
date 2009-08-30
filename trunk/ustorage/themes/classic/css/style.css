@@ -249,6 +249,15 @@ a img {	border: 0px solid #FFFFFF;}
 			#bottom span { font-size:11px; margin:0 44px 0 0;}
 				#bottom a.active { text-decoration:none; color:#000000; cursor:auto;}
 
+/* toplikebottom */
+        #toplikebottom
+        {
+            border-top: solid 1px #E8E8E8;
+            border-bottom: solid 1px #E8E8E8;
+            margin:15px 15px 15px 15px;
+            padding-top:5px;
+            text-align:left;
+        }
 /* keywords */
 		#keywords { font-size:10px; color:#878787; margin:0 35px;}
 
