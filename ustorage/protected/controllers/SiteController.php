@@ -82,12 +82,13 @@ class SiteController extends CController
 
     public function actionList()
     {
-        Yii::import('application.extensions.imdb.imdb');
-        Yii::import('application.extensions.imdb.imdbsearch');
-        $imdb = new imdbsearch();
-        $imdb -> setsearchname ('terminator');
-        $results = $imdb -> results ();
+//        Yii::import('application.extensions.imdb.imdb');
+//        Yii::import('application.extensions.imdb.imdbsearch');
+//        $imdb = new imdbsearch();
+//        $imdb -> setsearchname ('terminator');
+//        $results = $imdb -> results ();
+        $movies = Movie::model()->findAll();
 
-        $this -> render( 'list', array( 'movies' => $results ) );
+        $this -> render( 'list', array( 'movies' => $movies ) );
     }
 }
