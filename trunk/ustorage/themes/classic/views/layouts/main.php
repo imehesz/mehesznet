@@ -5,6 +5,16 @@
 <title>stored.by.u</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/table.css" />
+
+<?php echo CGoogleApi::init(); ?>
+
+<?php echo CHtml::script(
+    CGoogleApi::load('jquery','1.3.2') . "\n"
+); ?>
+
+
 </head>
 
 <body>
