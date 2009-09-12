@@ -51,4 +51,33 @@ class Movie extends CActiveRecord
 		return array(
 		);
 	}
+
+	/**
+	 *
+	 */
+	public function harvestImdb( $name )
+	{
+		die( 'stopped harvesting for now' );
+	  Yii::import('application.extensions.imdb.imdb');
+          Yii::import('application.extensions.imdb.imdbsearch');
+          $imdb = new imdbsearch();
+          $imdb -> setsearchname ( $name );
+          $results = $imdb -> results ();
+
+	  if( sizeof( $results ) > 0 )
+	  {
+	    $now = time();
+
+	    foreach( $results as $movie_from_imdb )
+	    {
+	      $movie = new Movie();
+	      $movie -> title = $movie_from_imdb -> main_title;
+	      $movie -> imdbID = $movie_from_imdb -> imdbID;
+	      $movie -> year = $movie_from_imdb -> main_year;
+	      $movie -> created = $now;
+	      $movie -> updated = $now;
+	      $movie -> save();
+   	    }
+	  }
+	}
 }

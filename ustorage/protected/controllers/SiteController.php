@@ -87,7 +87,33 @@ class SiteController extends CController
 //        $imdb = new imdbsearch();
 //        $imdb -> setsearchname ('terminator');
 //        $results = $imdb -> results ();
-        $movies = Movie::model()->findAll();
+	$name = Yii::app()->request->getParam( 'name', NULL );
+       
+       	// let's see first if we have any cached information in the DB
+	$movies = Movie::model()->
+			findAll( 
+			  sprintf(
+			    '`title` LIKE "%%%s%%" AND `updated`>%s', 
+			    strip_tags($name),
+			    (time()-CACHING_FOR)
+			  ) 
+			);
+
+	// if NOT we're gonna try to fetch the info from IMDB
+	if( ! sizeof( $movies ) )
+	{
+	  Movie::model()->harvestImdb( $name );
+
+	  // let's try to find the movies again ...
+  	  $movies = Movie::model()->
+			findAll( 
+			  sprintf(
+			    '`title` LIKE "%%%s%%" AND `updated`>%s', 
+			    strip_tags($name),
+			    (time()-CACHING_FOR)
+			  ) 
+			);
+	}
 
         $this -> render( 'list', array( 'movies' => $movies ) );
     }

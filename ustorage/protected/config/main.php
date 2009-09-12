@@ -34,11 +34,11 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to set up database
-		/*
 		'db'=>array(
-			'connectionString'=>'Your DSN',
+            'class' => 'CDbConnection',
+			'connectionString'=>'sqlite:/home/imehesz/sqlite/storedbyu.sql',
 		),
-		*/
+
 	),
 
 	// application-level parameters that can be accessed
