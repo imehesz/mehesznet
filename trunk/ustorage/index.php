@@ -12,6 +12,8 @@ switch( $_SERVER["SERVER_NAME"] )
 
 $config=dirname(__FILE__).'/protected/config/main.php';
 
+defined( 'CACHING_FOR' ) or define( 'CACHING_FOR', 604800 ); // setting caching for a week
+
 // remove the following line when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);
 
