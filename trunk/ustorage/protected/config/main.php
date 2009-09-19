@@ -38,6 +38,9 @@ return array(
             'class' => 'CDbConnection',
 			'connectionString'=>'sqlite:/home/imehesz/sqlite/storedbyu.sql',
 		),
+/*		'viewRenderer'=>array(
+			'class' => 'application.extensions.phaml.Phaml',
+		),*/
 
 	),
 

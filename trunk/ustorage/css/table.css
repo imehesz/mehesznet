@@ -42,12 +42,13 @@
 }
 
 
-#box-table-a tr.nohover{
-    background:#f00 none repeat scroll 0 0;
+#box-table-a tr td.nohover{
+    background:#fff none repeat scroll 0 0;
 }
 
 #box-table-a tr:hover td.nohover{
-    background:#E8EDFF none repeat scroll 0 0;
+    /* background:#E8EDFF none repeat scroll 0 0; */
+    background:#fff none repeat scroll 0 0;
     color: #666699;
 }
 

@@ -102,19 +102,41 @@ class SiteController extends CController
 	// if NOT we're gonna try to fetch the info from IMDB
 	if( ! sizeof( $movies ) )
 	{
-	  Movie::model()->harvestImdb( $name );
-
-	  // let's try to find the movies again ...
-  	  $movies = Movie::model()->
-			findAll( 
-			  sprintf(
-			    '`title` LIKE "%%%s%%" AND `updated`>%s', 
-			    strip_tags($name),
-			    (time()-CACHING_FOR)
-			  ) 
-			);
+	  // let's try to find the movies from IMDB then
+	  $movies = Movie::model()->harvestImdb( $name );	  
 	}
 
         $this -> render( 'list', array( 'movies' => $movies ) );
     }
+
+	/**
+	 * @name actionLoadMovieInfo
+	 * @param parameters
+	 * @return return_value
+	 */
+	public function actionLoadMovieInfo()
+	{
+		// first let's find this movie in our DB, because
+		// at this point, we have to have it ...
+
+		$imdbID = Yii::app()->request->getParam( 'id', NULL );
+
+		$movie = Movie::model()->findByAttributes( array( 'imdbID' => $imdbID ) );
+
+		if( $movie )
+		{
+			if( ! $movie -> runtime )
+			{
+				$movie -> fetchMovieFromImdb();
+			}
+
+			echo json_encode( $movie->attributes );
+		}
+		else
+		{
+			echo 'fail';
+		}
+
+		exit();
+	}
 }
