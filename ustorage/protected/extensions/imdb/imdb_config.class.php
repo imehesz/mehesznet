@@ -26,6 +26,7 @@ $PEAR = false;
  * @copyright (c) 2002-2004 by Giorgos Giagas and (c) 2004-2008 by Itzchak Rehberg and IzzySoft
  * @version $Revision: 183 $ $Date: 2009-01-07 16:19:34 +0100 (Mi, 07. Jan 2009) $
  */
+
 class imdb_config {
   var $imdbsite;
   var $cachedir;
@@ -36,6 +37,11 @@ class imdb_config {
   var $cache_expire;
   var $photodir;
   var $photoroot;
+
+	function __construct()
+	{
+		$this -> imdb_config();
+	}
 
   /** Constructor and only method of this base class.
    *  There's no need to call this yourself - you should just place your

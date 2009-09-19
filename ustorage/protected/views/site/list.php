@@ -5,6 +5,36 @@
  */
 
 ?>
+<script language="javascript">
+	var loadMovieInfo = function( imdbID, selectorID )
+	{
+		// jQuery.ajax({'url':'index.php?r=plan/updatedays','success':updatePlanDays,'data':'uid=&pid=','cache':false}); 
+		jQuery.ajax({'url':'index.php?r=site/loadmovieinfo','success':displayExtendedInfo,'data':'id='+imdbID,'cache':false}); 
+//		alert( 'imdbID:' + imdbID + ' selectorID:' + selectorID );
+	}
+
+	var displayExtendedInfo = function( data, textStatus )
+	{
+		if( textStatus == 'success' )
+		{
+			if( data != 'fail' )
+			{
+				movieObj = eval( '(' + data + ')' );
+				$('#movie_' + movieObj['imdbID'] ).html(
+					'<strong>Year:</strong> ' + movieObj['year'] + '<br />' +
+					'<strong>Runtime:</strong> ' + movieObj['runtime'] + '<br />' +
+					'<strong>Genre:</strong> ' + movieObj['genre'] + '<br />' +
+					'<strong>Summary:</strong> ' + movieObj['summary']
+				);
+				$('#ajaxloader_' + movieObj['imdbID']).html( '' );
+				return true;
+			}
+		}
+		alert( 'error :/ please try again, sorry' );
+	}
+</script>
+
+
 <div id="toplikebottom">
     <a href="/"><img src="images/storedbyu_100x39.png" alt="stored.by.u" title="stored.by.u" border="0" /></a>
     <?php /* <span style="width:100%;text-align:right;font-size:36px;font-weight:bolder;color:#ddd;">movies</span> */ ?>
@@ -22,19 +52,20 @@
 </thead>
 <tbody>
      <?php foreach( $movies as $movie ) : ?>
-        <tr alt="click for more info" title="click for more info" onclick="javascript:$('#info_<?=$movie->imdbID?>').show();
-;">
+        <tr alt="click for more info" title="click for more info" onclick="javascript:$('#info_<?=$movie->imdbID?>').show(); loadMovieInfo( '<?= $movie->imdbID ?>', 'info_summary_<?= $movie -> imdbID; ?>' );">
             <td><?= $movie -> imdbID; ?></td>
             <td><?= $movie -> title; ?></td>
             <td><?= $movie -> year; ?></td>
             <td style="font-size:10px;"><?= date('\o\n l, F jS Y', $movie -> updated); ?></td>
         </tr>
         <tr class="nohover" id="info_<?=$movie->imdbID;?>" style="display:none;">
-            <td class="nohover"></td>
-            <td class="nohover" colspan="3" style="font-size:12px;">
-                blah blah blah, yup yup yup <br />
-                hey hey he<br>
-                <a href="#">send email</a> | <a href="#">instant email</a>
+            <td class="nohover">
+				<span style="font-size:10px;" id="ajaxloader_<?= $movie->imdbID; ?>"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/ajax-loader.gif" /><br />loading ...</span>
+			</td>
+            <td class="nohover" colspan="3" style="font-size:12px;" id="info_summary_<?= $movie->imdbID; ?>">
+                <div id="movie_<?= $movie->imdbID; ?>"></div>
+				<p></p>
+                <a href="#">send email</a> | <a href="http://www.imdb.com/title/tt<?= $movie->imdbID; ?>" alt="in a new window" title="in a new window" target="_blank">check on IMDB</a> | <a href="#" onClick="javascript:$('#info_<?= $movie->imdbID ?>').hide();">close</a>
             </td>
         </tr>
     <?php endforeach; ?>
