@@ -139,4 +139,33 @@ class SiteController extends CController
 
 		exit();
 	}
+
+	public function actionEmail()
+	{
+		$imdbID = Yii::app()->request->getParam( 'id', NULL );
+		$movie = Movie::model()->findByAttributes( array( 'imdbID' => $imdbID ) );
+		$form = new Email();
+
+		$form->setAttributes( 
+			array( 
+				'subject'   => $movie->title . ' (' . $movie->year . ')',
+				'body' 		=> 'Title: ' . $movie -> title . "\r\n" .
+								'Year: ' . $movie -> year . "\r\n" . 
+								'Director: ' . $movie -> director . "\r\n\r\n" . 
+								'Summary: ' . $movie -> summary . "\r\n\r\n" . 
+								'Cast: ' . $movie -> cast . "\r\n\r\n" .
+								'Link: http://www.imdb.com/title/tt' . $movie -> imdbID . "\r\n" 
+			) 
+		);
+
+		if( $movie )
+		{
+		}
+		else
+		{
+			die( 'could not find this movie!? please try again l8r' );
+		}
+
+		$this -> render( 'email', array( 'form' => $form ) );
+	}
 }

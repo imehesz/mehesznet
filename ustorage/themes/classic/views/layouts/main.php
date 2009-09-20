@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/table.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/thickbox.css" />
 
 <?php echo CGoogleApi::init(); ?>
 
@@ -14,6 +15,7 @@
     CGoogleApi::load('jquery','1.3.2') . "\n"
 ); ?>
 
+<script type="text/javascript" src="<?= Yii::app()->request->baseUrl; ?>/js/thickbox.js"></script>
 
 </head>
 

@@ -11,11 +11,13 @@
 
 div.yiiForm
 {
-	border: 2px solid #B7DDF2;
-	background: #EBF4FB;
+	/* border: 2px solid #B7DDF2; */
+	border: 2px solid #008080;
+	/* background: #EBF4FB; */
+	background: #efefef;
 	margin: 0;
 	padding: 5px;
-	width: 550px;
+	width: 395px;
 }
 
 div.yiiForm label.required
