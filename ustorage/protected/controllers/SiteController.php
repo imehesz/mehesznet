@@ -169,7 +169,9 @@ class SiteController extends CController
 			$subject 	= $_POST['Email']['subject'];
 			$message    = $_POST['Email']['body'] . "\r\n\r\n" . '--' . "\r\n" . 'stored by U | info [ at ] mehesz.net';
 			
-			$headers 	= 'From: noreply-DVD-stored-by-u@mehesz.net' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+			$headers 	= 'From: noreply-DVD-stored-by-u@mehesz.net' . "\r\n" . 
+						'Reply-to: noreply-DVD-stored-by-u@mehesz.net'. "\r\n" . 
+						'X-Mailer: PHP/' . phpversion();
 
 
 			$session = new CHttpSession;
