@@ -7,6 +7,7 @@
 ?>
 
 <!-- top -->
+<?php /*
 		<div id="top">
 			<div>
                 <a href="#" class="tag tag1">4g communications</a>
@@ -39,10 +40,26 @@
             </div>
 
 	  </div>
+	  */ ?>
 
+                <div style="width:100%;text-align:center;">
+					<a href="/" class="logo"><img src="images/storedbyu_255x99.png" alt="stored.by.u" title="stored.by.u" /></a>
+					<?php 
+						$session = new CHttpSession;
+						$session -> open();
+						if( $session['mehesznet_storedbyu_flash_message'] ) :
+					?>
+					<script language="javascript">
+						$(document).ready(function() {
+							$('#flash_message').fadeOut(3000);
+						 });
+					</script>
+					<div id="flash_message" style="padding:5px;font-size:20px;background-color:#348781;color:#fff;margin:0px 200px 0px 200px;"><?= $session['mehesznet_storedbyu_flash_message'] ?></div>
+					<?php $session['mehesznet_storedbyu_flash_message'] = ''; endif; ?>
+				</div>
 <!-- search and menus -->
 
-		<div id="sm">
+		<div style="margin-top:15px;">
 
 <!-- main menu -->
 <?php /*
