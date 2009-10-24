@@ -151,12 +151,40 @@ class SiteController extends CController
 				'subject'   => $movie->title . ' (' . $movie->year . ')',
 				'body' 		=> 'Title: ' . $movie -> title . "\r\n" .
 								'Year: ' . $movie -> year . "\r\n" . 
+								'Link: http://www.imdb.com/title/tt' . $movie -> imdbID . "\r\n". 
 								'Director: ' . $movie -> director . "\r\n\r\n" . 
 								'Summary: ' . $movie -> summary . "\r\n\r\n" . 
-								'Cast: ' . $movie -> cast . "\r\n\r\n" .
-								'Link: http://www.imdb.com/title/tt' . $movie -> imdbID . "\r\n" 
+								'Cast: ' . $movie -> cast . "\r\n\r\n"
 			) 
 		);
+
+		if( $_POST )
+		{
+			if( $_POST['Email']['remember_me'] )
+			{
+				setcookie('mehesznet_storedbyu_email', $_POST['Email']['email_address'] );
+			}
+
+			$to 		= $_POST['Email']['email_address'];
+			$subject 	= $_POST['Email']['subject'];
+			$message    = $_POST['Email']['body'] . "\r\n\r\n" . '--' . "\r\n" . 'stored by U | info [ at ] mehesz.net';
+			
+			$headers 	= 'From: noreply-DVD-stored-by-u@mehesz.net' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+
+			$session = new CHttpSession;
+			$session -> open();
+			if( mail( $to, $subject, $message, $headers ) )
+			{
+				$session['mehesznet_storedbyu_flash_message'] = 'email has been sent ...';
+			}
+			else
+			{
+				$session['mehesznet_storedbyu_flash_message'] = 'errr, please try again ...';
+			}
+
+			$this->redirect( $this->createUrl('site/search') );
+		}
 
 		if( $movie )
 		{

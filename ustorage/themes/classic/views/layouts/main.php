@@ -24,7 +24,7 @@
 	<div id="container">
         <?= $content; ?>
 		<div id="bottom">
-            <span>&copy; 2003 - <?= date( 'Y', time() ); ?>  mehesz<font style="color:#f00;">.</font>net</span> Home - <a href="#">About</a> - <a href="#">Contact</a> - <a href="#">Advertise</a>
+            <span>&copy; <?= date( 'Y', time() ); ?>  mehesz<font style="color:#f00;">.</font>net</span> Home - <a href="#">About</a> - <a href="javascript:void(0);" onclick="alert('info [ at ] mehesz.net');">Contact</a> - <a href="#">Advertise</a>
 		</div>
 
         <?php /*

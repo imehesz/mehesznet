@@ -29,6 +29,7 @@ class Movie extends CActiveRecord
 	public function rules()
 	{
 		return array(
+			array( 'imdbID', 'unique' ),
 		);
 	}
 
@@ -57,6 +58,7 @@ class Movie extends CActiveRecord
 	 */
 	public function harvestImdb( $name )
 	{
+	/*
 	      $movie = new Movie();
 	      $movie -> title = 'testtitle';
 	      $movie -> imdbID = '0133093';
@@ -65,8 +67,8 @@ class Movie extends CActiveRecord
 	      $movie -> updated = time();
 	      $movie -> save();
 
-		die( 'stopped harvesting for now' );
-		/*
+		die( 'stopped harvesting for now' ); */
+		
 	  Yii::import('application.extensions.imdb.imdb');
           Yii::import('application.extensions.imdb.imdbsearch');
           $imdb = new imdbsearch();
@@ -95,7 +97,7 @@ class Movie extends CActiveRecord
    	    }
 	  }
 
-	  return $retval; */
+	  return $retval;
 	}
 
 	/**
