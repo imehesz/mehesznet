@@ -100,6 +100,9 @@
 						</form>
 				<p>searching only in Movies ... for now</p>
 			</div>
+			<div style="width:100%;text-align:center;margin-top:50px;">
+				<iframe src="http://rcm.amazon.com/e/cm?t=mehesznet-20&o=1&p=13&l=ur1&category=dvd&banner=1Y6X580CSWSE2JYBZ6R2&f=ifr" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+			</div>
 
 <!-- browse by -->
             <?php /*
