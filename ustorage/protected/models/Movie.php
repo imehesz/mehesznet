@@ -30,6 +30,7 @@ class Movie extends CActiveRecord
 	{
 		return array(
 			array( 'imdbID', 'unique' ),
+            array( 'imdbID', 'required' ),
 		);
 	}
 
@@ -52,6 +53,47 @@ class Movie extends CActiveRecord
 		return array(
 		);
 	}
+
+    /**
+     *
+     * @param <type> $name
+     * @return <type> 
+     */
+    public function harvestTmdb( $name )
+    {
+        $movies_json = @file_get_contents( TMDB_LIST_JSON_PATH . TMDB_API_KEY . '/' . $name );
+
+        // $movies_json = @file_get_contents( '/home/imehesz/terminators.txt' );
+        if( $movies_json )
+        {
+            $now = time();
+            $movies = json_decode( $movies_json );
+
+            foreach( $movies as $movie_from_tmdb )
+            {
+//                 $movie = new Movie();
+//                echo $movie_from_tmdb->name;
+//                echo $movie_from_tmdb->imdb_id;
+//                echo substr($movie_from_tmdb->released,0,4);
+//                echo '.<br />';
+//
+                $movie = new Movie();
+                $movie -> title = $movie_from_tmdb -> name;
+                $movie -> imdbID = $movie_from_tmdb -> imdb_id;
+                $movie -> year = substr($movie_from_tmdb->released,0,4);
+                $movie -> created = $now;
+                $movie -> updated = $now;
+
+                if( $movie->validate() )
+                {
+                    $movie -> save();
+                }
+
+                $retval[]=$movie;
+            }
+        }
+        return $retval;
+    }
 
 	/**
 	 *
@@ -99,6 +141,68 @@ class Movie extends CActiveRecord
 
 	  return $retval;
 	}
+
+    /**
+     * 
+     */
+    public function fetchMovieFromTmdb()
+    {
+        if( $this -> imdbID )
+        {
+            $url = IMDB_JSON_PATH . TMDB_API_KEY . '/' . $this -> imdbID;
+            $imdb_json = @file_get_contents( $url );
+            if( $imdb_json )
+            {
+                $movie_from_imdb = json_decode( $imdb_json );
+                $id = $movie_from_imdb[0] -> id;
+                if( $id )
+                {
+                    foreach( $movie_from_imdb[0]->genres as $genre )
+                    {
+                        $genres .= $genre->name . ',';
+                    }
+
+                    $this -> genre      = substr($genres,0,strlen($genres)-1);
+                    $this -> runtime    = $movie_from_imdb[0]->runtime;
+                    $this -> summary    = $movie_from_imdb[0]->overview;
+
+                    // we have the ID so we can load the cast
+                    $tmdb_json = @file_get_contents(TMDB_JSON_INFO . TMDB_API_KEY . '/' . $id);
+                    $movie_from_tmdb = json_decode( $tmdb_json );
+                    
+                    if( $movie_from_tmdb )
+                    {
+                        // we have to separate the actors from the
+                        // directors
+                        $cast = $movie_from_tmdb[0]->cast;
+
+                        foreach( $cast as $member )
+                        {
+                            switch( $member->job )
+                            {
+                                case 'director':
+                                case 'Director':
+                                                    $directors[] = $member->name;
+                                                    break;
+                                case 'actor'   :
+                                case 'Actor'   :
+                                                    $actors[]   = $member->name;
+                                                    break;
+                            }
+                        }
+                        $this -> cast       = is_array( $actors ) ? implode( ',', $actors ):'';
+                        $this -> director   = is_array( $directors ) ? implode( ',', $directors ):'';
+                    }
+
+                    if( $this -> save() )
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
 
 	/**
 	 *

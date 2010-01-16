@@ -97,9 +97,14 @@
 								<input  type="image" src="/images/search.gif"/>
 						  </div>
 						  </fieldset>
-						</form>
-				<p>searching only in Movies ... for now</p>
+						
 			</div>
+            <div style="margin:0 auto;width:200px;margin-top:5px;">
+                <span><input type="radio" id="moboco" name="moboco" value="movie" checked/> movies</span>
+                <span><input type="radio" id="moboco" name="moboco" value="book" disabled /> books</span>
+                <span><input type="radio" id="moboco" name="moboco" value="comic" disabled /> comics</span>
+            </div>
+            </form>
 			<div style="width:100%;text-align:center;margin-top:50px;">
 				<iframe src="http://rcm.amazon.com/e/cm?t=mehesznet-20&o=1&p=13&l=ur1&category=dvd&banner=1Y6X580CSWSE2JYBZ6R2&f=ifr" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 			</div>

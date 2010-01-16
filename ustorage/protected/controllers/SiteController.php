@@ -87,26 +87,29 @@ class SiteController extends CController
 //        $imdb = new imdbsearch();
 //        $imdb -> setsearchname ('terminator');
 //        $results = $imdb -> results ();
-	$name = Yii::app()->request->getParam( 'name', NULL );
-       
-       	// let's see first if we have any cached information in the DB
-	$movies = Movie::model()->
-			findAll( 
-			  sprintf(
-			    '`title` LIKE "%%%s%%" AND `updated`>%s', 
-			    strip_tags($name),
-			    (time()-CACHING_FOR)
-			  ) 
-			);
+	$name   = Yii::app()->request->getParam( 'name', NULL );
 
-	// if NOT we're gonna try to fetch the info from IMDB
-	if( ! sizeof( $movies ) )
-	{
-	  // let's try to find the movies from IMDB then
-	  $movies = Movie::model()->harvestImdb( $name );	  
-	}
+    $moboco = Yii::app()->request->getParam( 'moboco', NULL );
 
-        $this -> render( 'list', array( 'movies' => $movies ) );
+    switch( $moboco )
+    {
+        case 'movie':
+                    $movies = Movie::model()->harvestTmdb( $name );
+                    $this -> render( 'list', array( 'movies' => $movies ) );
+                    break;
+    }
+
+//  TODO revise this and maybe remove
+//
+//   	// let's see first if we have any cached information in the DB
+//	$movies = Movie::model()->
+//			findAll(
+//			  sprintf(
+//			    '`title` LIKE "%%%s%%" AND `updated`>%s',
+//			    strip_tags($name),
+//			    (time()-CACHING_FOR)
+//			  )
+//			);
     }
 
 	/**
@@ -127,7 +130,7 @@ class SiteController extends CController
 		{
 			if( ! $movie -> runtime )
 			{
-				$movie -> fetchMovieFromImdb();
+				$movie -> fetchMovieFromTmdb();
 			}
 
 			echo json_encode( $movie->attributes );
