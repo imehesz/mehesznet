@@ -154,10 +154,11 @@ class SiteController extends CController
 				'subject'   => $movie->title . ' (' . $movie->year . ')',
 				'body' 		=> 'Title: ' . $movie -> title . "\r\n" .
 								'Year: ' . $movie -> year . "\r\n" . 
-								'Link: http://www.imdb.com/title/tt' . $movie -> imdbID . "\r\n". 
+								'Link: http://www.imdb.com/title/' . $movie -> imdbID . "\r\n". 
 								'Director: ' . $movie -> director . "\r\n\r\n" . 
 								'Summary: ' . $movie -> summary . "\r\n\r\n" . 
-								'Cast: ' . $movie -> cast . "\r\n\r\n"
+								'Cast: ' . $movie -> cast . "\r\n\r\n" .
+                                'Genre: ' . $movie -> genre
 			) 
 		);
 
@@ -165,15 +166,15 @@ class SiteController extends CController
 		{
 			if( $_POST['Email']['remember_me'] )
 			{
-				setcookie('mehesznet_storedbyu_email', $_POST['Email']['email_address'] );
+				setcookie('mehesznet_storedbyu_email', $_POST['Email']['email_address'], 2592000 + time() );
 			}
 
 			$to 		= $_POST['Email']['email_address'];
 			$subject 	= $_POST['Email']['subject'];
 			$message    = $_POST['Email']['body'] . "\r\n\r\n" . '--' . "\r\n" . 'stored by U | info [ at ] mehesz.net';
 			
-			$headers 	= 'From: noreply-DVD-stored-by-u@mehesz.net' . "\r\n" . 
-						'Reply-to: noreply-DVD-stored-by-u@mehesz.net'. "\r\n" . 
+			$headers 	= 'From: noreply-dvd-stored-by-u@mehesz.net' . "\r\n" .
+						'Reply-to: noreply-dvd-stored-by-u@mehesz.net'. "\r\n" .
 						'X-Mailer: PHP/' . phpversion();
 
 
