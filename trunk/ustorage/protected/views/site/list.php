@@ -59,7 +59,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         <th scope="col">imdbID</th>
         <th scope="col">title</th>
         <th scope="col">year</th>
-        <th scope="col">last cached</th>
+        <?php /* <th scope="col">last cached</th> */ ?>
     </tr>
 </thead>
 <tbody>
@@ -68,7 +68,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
             <td><?= $movie -> imdbID; ?></td>
             <td><?= $movie -> title; ?></td>
             <td><?= $movie -> year; ?></td>
-            <td style="font-size:10px;"><?= date('\o\n l, F jS Y', $movie -> updated); ?></td>
+            <?php /* <td style="font-size:10px;"><?= date('\o\n l, F jS Y', $movie -> updated); ?></td> */ ?>
         </tr>
         <tr class="nohover" id="info_<?=$movie->imdbID;?>" style="display:none;">
             <td class="nohover">

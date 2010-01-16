@@ -36,7 +36,7 @@ return array(
 		// uncomment the following to set up database
 		'db'=>array(
             'class' => 'CDbConnection',
-			'connectionString'=>'sqlite:/home/imehesz/sqlite/storedbyu.sql',
+			'connectionString'=>'sqlite:' . SQLITE_PATH . DIRECTORY_SEPARATOR . DB_NAME,
 		),
 /*		'viewRenderer'=>array(
 			'class' => 'application.extensions.phaml.Phaml',
