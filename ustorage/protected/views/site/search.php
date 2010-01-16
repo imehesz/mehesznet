@@ -92,7 +92,7 @@
 						<!-- Google CSE Search Box Begins  -->
 						<form action="?r=site/list" method="post">
 						<fieldset>
-						  <input type="text" name="name" id="searchField"  size="30" value="SEARCH HERE ..." onClick="javascript:this.value='';" onBlur="javascript:if(this.value.length==0){this.value='SEARCH HERE ...';}" />
+						  <input type="text" name="name" size="45" id="searchField" value="SEARCH HERE ..." onClick="javascript:if(this.value=='SEARCH HERE ...'){this.value=''};" onBlur="javascript:if(this.value.length==0){this.value='SEARCH HERE ...';}" />
 						  <div class="b">
 								<input  type="image" src="/images/search.gif"/>
 						  </div>
